@@ -2,7 +2,7 @@ module github.com/linode/linode-blockstorage-csi-driver
 
 require (
 	github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973 // indirect
-	github.com/container-storage-interface/spec v1.0.0
+	github.com/container-storage-interface/spec v1.0.1-0.20181128174126-37e74064635d
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dnaeon/go-vcr v0.0.0-20180920040454-5637cf3d8a31 // indirect
 	github.com/docker/distribution v2.6.2+incompatible // indirect
@@ -15,8 +15,8 @@ require (
 	github.com/gregjones/httpcache v0.0.0-20181110185634-c63ab54fda8f // indirect
 	github.com/hashicorp/golang-lru v0.5.0 // indirect
 	github.com/json-iterator/go v1.1.5 // indirect
-	github.com/kubernetes-csi/csi-test v1.1.0
-	github.com/linode/linodego v0.7.0
+	github.com/kubernetes-csi/csi-test v1.1.1
+	github.com/linode/linodego v0.7.1
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect

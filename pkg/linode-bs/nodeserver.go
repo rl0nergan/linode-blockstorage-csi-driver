@@ -300,6 +300,37 @@ func (ns *LinodeNodeServer) NodeGetInfo(ctx context.Context, req *csi.NodeGetInf
 
 }
 
+func (ns *LinodeNodeServer) NodeExpandVolume(ctx context.Context, req *csi.NodeExpandVolumeRequest) (*csi.NodeExpandVolumeResponse, error) {
+	ns.mux.Lock()
+	defer ns.mux.Unlock()
+	glog.V(4).Infof("NodeExpandVolume called with req: %#v", req)
+
+	// Validate Arguments
+	volumeID := req.GetVolumeId()
+	volumePath := req.GetVolumePath()
+	capRange := req.GetCapacityRange()
+
+	if len(volumeID) == 0 {
+		return nil, status.Error(codes.InvalidArgument, "NodeExpandVolume Volume ID must be provided")
+	}
+
+	if len(volumePath) == 0 {
+		return nil, status.Error(codes.InvalidArgument, "NodeExpandVolume Volume Path must be provided")
+	}
+	if capRange == nil {
+		return nil, status.Error(codes.InvalidArgument, "NodeExpandVolume Capacity Range must be provided")
+	}
+
+	size, err := getRequestCapacitySize(capRange)
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+
+	// TODO anything? .. https://github.com/kubernetes-csi/external-resizer
+
+	return nil, status.Error(codes.Unimplemented, fmt.Sprintf("NodeExpandVolume is not yet implemented"))
+}
+
 func (ns *LinodeNodeServer) NodeGetVolumeStats(ctx context.Context, req *csi.NodeGetVolumeStatsRequest) (*csi.NodeGetVolumeStatsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, fmt.Sprintf("NodeGetVolumeStats is not yet implemented"))
 }

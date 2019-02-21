@@ -79,6 +79,7 @@ func (linodeDriver *LinodeDriver) SetupLinodeDriver(linodeClient linodeclient.Li
 	csc := []csi.ControllerServiceCapability_RPC_Type{
 		csi.ControllerServiceCapability_RPC_CREATE_DELETE_VOLUME,
 		csi.ControllerServiceCapability_RPC_PUBLISH_UNPUBLISH_VOLUME,
+		csi.ControllerServiceCapability_RPC_EXPAND_VOLUME,
 		// csi.ControllerServiceCapability_RPC_CREATE_DELETE_SNAPSHOT,
 		// csi.ControllerServiceCapability_RPC_LIST_SNAPSHOTS,
 		csi.ControllerServiceCapability_RPC_PUBLISH_READONLY,
@@ -88,6 +89,7 @@ func (linodeDriver *LinodeDriver) SetupLinodeDriver(linodeClient linodeclient.Li
 	}
 	ns := []csi.NodeServiceCapability_RPC_Type{
 		csi.NodeServiceCapability_RPC_STAGE_UNSTAGE_VOLUME,
+		csi.NodeServiceCapability_RPC_EXPAND_VOLUME,
 	}
 	if err := linodeDriver.AddNodeServiceCapabilities(ns); err != nil {
 		return err
