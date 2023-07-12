@@ -5,6 +5,10 @@ apiToken: ""
 # region [Required] - Must be a Linode region. (https://api.linode.com/v4/regions)
 region: ""
 
+# you can also specify the name of an existing Secret
+# with keys TOKEN and REGION
+existingSecret: ""
+
 # Default namespace is "kube-system" but it can be set to another namespace
 namespace: kube-system
 

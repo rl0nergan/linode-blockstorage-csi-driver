@@ -55,7 +55,7 @@ spec:
           valueFrom:
             secretKeyRef:
               key: token
-              name: linode
+              name: {{ template "secretName" . }}
         image: {{ .Values.csiLinodePlugin.image }}:{{ .Values.csiLinodePlugin.tag | default .Chart.AppVersion }}
         imagePullPolicy: {{ .Values.csiLinodePlugin.pullPolicy }}
         name: csi-linode-plugin

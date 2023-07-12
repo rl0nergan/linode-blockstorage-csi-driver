@@ -60,3 +60,24 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Get the Linode API secret.
+*/}}
+{{- define "secretName" -}}
+{{- if .Values.existingSecret }}
+    {{- printf "%s" (tpl .Values.existingSecret $) -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Return true if a linode secret object should be created
+*/}}
+{{- define "createSecret" -}}
+{{- if (or
+    (and .Values.apiToken)
+    (not .Values.existingSecret )
+    ) -}}
+    {{- true -}}
+{{- end -}}
+{{- end -}}
